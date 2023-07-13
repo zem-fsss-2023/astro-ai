@@ -1,26 +1,22 @@
 package com.emni.astro.database;
 
-import java.sql.Date;
-
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-// import jakarta.persistence.Enumerated;
-
+@Entity
 public class User {
     @Id
-    @Column(name = "id")
+    @Column(name = "userId")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer userId;
     private String email;
-    private Date birthDate;
-    
-    // @Enumerated()
-    private Horoscope userHoroscope;
+    private String birthDate;
+    private String userHoroscope;
 
-    public User(String email, Date birthDate, Horoscope userHoroscope) {
+    public User(String email, String birthDate, String userHoroscope) {
         this.email = email;
         this.birthDate = birthDate;
         this.userHoroscope = userHoroscope;
@@ -32,16 +28,16 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
-    public Horoscope getUserHoroscope() {
+    public String getUserHoroscope() {
         return userHoroscope;
     }
-    public void setUserHoroscope(Horoscope userHoroscope) {
+    public void setUserHoroscope(String userHoroscope) {
         this.userHoroscope = userHoroscope;
     }
     public Integer getUserId() {

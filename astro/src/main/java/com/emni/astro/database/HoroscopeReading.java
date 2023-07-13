@@ -9,40 +9,25 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-enum Horoscope {
-    ARIES,
-    TAURUS,
-    GEMINI,
-    CANCER,
-    LEO,
-    VIRGO,
-    LIBRA,
-    SCORPIO,
-    SAGITTARIUS,
-    CAPRICORN,
-    AQUARIUS,
-    PISCES
-}
 
 
 @Entity
 @Table(name = "HoroscopeReadings")
 public class HoroscopeReading {
     @Id
-    @Column(name = "id")
+    @Column(name = "readingId")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer readingId;
     
-    private Horoscope horoscopeType;
-    private Date readingDate;
+    private String horoscopeType;
+    private String readingDate;
     private String loveReading;
     private String personalReading;
     private String careerReading;
     private String healthReading;
     private String tip;
     
-
-    public HoroscopeReading(Horoscope horoscopeType, Date readingDate, String loveReading, String personalReading,
+    public HoroscopeReading(String horoscopeType, String readingDate, String loveReading, String personalReading,
             String careerReading, String healthReading, String tip) {
         this.horoscopeType = horoscopeType;
         this.readingDate = readingDate;
@@ -58,16 +43,16 @@ public class HoroscopeReading {
     public void setReadingId(Integer readingId) {
         this.readingId = readingId;
     }
-    public Horoscope getHoroscopeType() {
+    public String getHoroscopeType() {
         return horoscopeType;
     }
-    public void setHoroscopeType(Horoscope horoscopeType) {
+    public void setHoroscopeType(String horoscopeType) {
         this.horoscopeType = horoscopeType;
     }
-    public Date getReadingDate() {
+    public String getReadingDate() {
         return readingDate;
     }
-    public void setReadingDate(Date readingDate) {
+    public void setReadingDate(String readingDate) {
         this.readingDate = readingDate;
     }
     public String getLoveReading() {
@@ -100,4 +85,6 @@ public class HoroscopeReading {
     public void setTip(String tip) {
         this.tip = tip;
     }
+
+    
 }
