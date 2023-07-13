@@ -5,13 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 
 
 @Entity
-@Table(name = "HoroscopeReadings", uniqueConstraints = { @UniqueConstraint(columnNames = { "horoscopeType", "readingDate" }) })
+@Table(name = "HoroscopeReadings", uniqueConstraints = { @UniqueConstraint(columnNames = { "horoscopeType", "readingDate", "readingType" }) })
 public class HoroscopeReading {
     @Id
     @Column(name = "readingId")
@@ -22,23 +23,20 @@ public class HoroscopeReading {
     private String horoscopeType;
     @Column(name = "readingDate")
     private String readingDate;
-    private String loveReading;
-    private String personalReading;
-    private String careerReading;
-    private String healthReading;
-    private String tip;
+    @Lob
+    private String reading;
+    @Column(name = "readingType")
+    private String readingType;
+    
 
     public HoroscopeReading() {}
     
-    public HoroscopeReading(String horoscopeType, String readingDate, String loveReading, String personalReading,
-            String careerReading, String healthReading, String tip) {
+    public HoroscopeReading(String horoscopeType, String readingDate, String reading, String readingType) {
         this.horoscopeType = horoscopeType;
         this.readingDate = readingDate;
-        this.loveReading = loveReading;
-        this.personalReading = personalReading;
-        this.careerReading = careerReading;
-        this.healthReading = healthReading;
-        this.tip = tip;
+        this.reading = reading;
+        this.readingType = readingType;
+
     }
     public Integer getReadingId() {
         return readingId;
@@ -58,36 +56,16 @@ public class HoroscopeReading {
     public void setReadingDate(String readingDate) {
         this.readingDate = readingDate;
     }
-    public String getLoveReading() {
-        return loveReading;
+    public String getReading() {
+        return reading;
     }
-    public void setLoveReading(String loveReading) {
-        this.loveReading = loveReading;
+    public void setReading(String loveReading) {
+        this.reading = loveReading;
     }
-    public String getPersonalReading() {
-        return personalReading;
+    public String getReadingType() {
+        return readingType;
     }
-    public void setPersonalReading(String personalReading) {
-        this.personalReading = personalReading;
+    public void setReadingType(String readingType) {
+        this.readingType = readingType;
     }
-    public String getCareerReading() {
-        return careerReading;
-    }
-    public void setCareerReading(String careerReading) {
-        this.careerReading = careerReading;
-    }
-    public String getHealthReading() {
-        return healthReading;
-    }
-    public void setHealthReading(String healthReading) {
-        this.healthReading = healthReading;
-    }
-    public String getTip() {
-        return tip;
-    }
-    public void setTip(String tip) {
-        this.tip = tip;
-    }
-
-    
 }

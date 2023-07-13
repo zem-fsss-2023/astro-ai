@@ -5,5 +5,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HoroscopeRepository extends JpaRepository<HoroscopeReading, Integer> {
-    public HoroscopeReading findByReadingDateAndHoroscopeType(String readingDate, String horoscopeType);
+    // find the entry in database with the given readingDate, horoscopeType, and readingType
+    public HoroscopeReading findByReadingDateAndHoroscopeTypeAndReadingType( String readingDate, String horoscopeType, String readingType);
+
+    // return true if the entry exists in the database
+    public boolean existsByReadingDateAndHoroscopeTypeAndReadingType( String readingDate, String horoscopeType, String readingType);
 }
