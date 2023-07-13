@@ -5,16 +5,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
 
 @Entity
+@Table(name = "Users", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
 public class User {
     @Id
     @Column(name = "userId")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer userId;
+    @Column(name = "email")
     private String email;
     private String birthDate;
     private String userHoroscope;
+
+    public User() {}
 
     public User(String email, String birthDate, String userHoroscope) {
         this.email = email;

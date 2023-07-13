@@ -1,31 +1,34 @@
 package com.emni.astro.database;
 
-import java.sql.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 
 
 @Entity
-@Table(name = "HoroscopeReadings")
+@Table(name = "HoroscopeReadings", uniqueConstraints = { @UniqueConstraint(columnNames = { "horoscopeType", "readingDate" }) })
 public class HoroscopeReading {
     @Id
     @Column(name = "readingId")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer readingId;
     
+    @Column(name = "horoscopeType")
     private String horoscopeType;
+    @Column(name = "readingDate")
     private String readingDate;
     private String loveReading;
     private String personalReading;
     private String careerReading;
     private String healthReading;
     private String tip;
+
+    public HoroscopeReading() {}
     
     public HoroscopeReading(String horoscopeType, String readingDate, String loveReading, String personalReading,
             String careerReading, String healthReading, String tip) {

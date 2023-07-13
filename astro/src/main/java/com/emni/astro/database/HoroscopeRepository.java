@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HoroscopeRepository extends JpaRepository<HoroscopeReading, Integer> {
+    public HoroscopeReading findByReadingDateAndHoroscopeType(String readingDate, String horoscopeType);
 }

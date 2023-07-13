@@ -1,5 +1,8 @@
 package com.emni.astro.controllers;
 
+
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +13,8 @@ import com.emni.astro.database.HoroscopeReading;
 import com.emni.astro.database.HoroscopeRepository;
 import com.emni.astro.database.User;
 import com.emni.astro.database.UserRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -37,12 +42,24 @@ public class DBController {
     }
 
     @GetMapping("/getReadings")
-    public Iterable<HoroscopeReading> getReadings() {
+    public List<HoroscopeReading> getReadings() {
         return horoscopeRepository.findAll();
     }
 
     @GetMapping("/getUsers")
-    public Iterable<User> getUsers() {
+    public List<User> getUsers() {
         return userRepository.findAll();
     }
+
+    @GetMapping(value="/getReadingsFor")
+    public HoroscopeReading getReading(@RequestParam("readingDate") String readingDate, @RequestParam("horoscopeType") String horoscopeType) {
+        return horoscopeRepository.findByReadingDateAndHoroscopeType(readingDate, horoscopeType);
+    }
+
+    @GetMapping(value="/getUserFor")
+    public User getUser(@RequestParam("email") String email) {
+        return userRepository.findByEmail(email);
+    }
+    
+    
 }
