@@ -60,7 +60,7 @@ public class DBController {
     public HoroscopeReading getReading(@RequestParam("readingType") String readingType, @RequestParam("horoscopeType") String horoscopeType) {
         // check if if readingType is valid
         // check if horoscopeType is valid
-        String[] validReadingTypes = {"love", "career", "health", "money", "general"};
+        String[] validReadingTypes = {"love", "health", "money"};
         String[] validHoroscopeTypes = {"aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio",
                 "sagittarius", "capricorn", "aquarius", "pisces"};
         boolean readingTypeValid = false;
